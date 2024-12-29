@@ -69,9 +69,11 @@ window.onload = function() {
     }, 750);
 
 // Fecha de inicio
+
+};
+
 const startDate = new Date('2022-12-29T00:00:00');
 
-// Función para actualizar el reloj
 function updateClock() {
     const now = new Date();
     const diff = now - startDate;
@@ -88,4 +90,3 @@ function updateClock() {
     
     document.getElementById('clock').innerText = displayText;
 }
-};

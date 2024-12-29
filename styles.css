@@ -7,7 +7,6 @@ body {
      font-family: 'Dancing Script', cursive;
      font-weight: bold;
 }
-
 .fireworks-container {
     position: absolute;
     top: 0;
@@ -89,10 +88,14 @@ body {
 }
 
 .clock {
-    position: absolute;
-    top: 20px; /* Ajusta según sea necesario */
-    left: 20px; /* Ajusta según sea necesario */
-    color: #2e3440; /* Color del texto */
+    position: absolute; /* Fijo para que esté siempre visible */
+    bottom: 20px; /* Espacio desde la parte inferior */
+    left: 50%; /* Centrado horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrar */
+    background-color: #eceff4; /* Fondo blanco */
+    color: #2e3440; /* Texto negro */
+    padding: 10px 20px; /* Espaciado interno */
+    border-radius: 8px; /* Bordes redondeados */
     font-size: 18px; /* Tamaño de la fuente */
     font-family: 'Dancing Script', cursive; /* Fuente utilizada */
 }

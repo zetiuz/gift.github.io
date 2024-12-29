@@ -63,8 +63,34 @@ function startFireworks() {
 window.onload = function() {
     startFireworks();
     
-    // Crear un nuevo fuego artificial cada 750 m
+    // Crear un nuevo fuego artificial cada 750 ms
     setInterval(() => {
         fireworks.start();
     }, 750);
+
+// Reloj
+    setInterval(updateClock, 1000);
 };
+
+// Fecha de inicio
+const startDate = new Date('2022-12-29T00:00:00');
+
+function updateClock() {
+    const now = new Date();
+    
+    // Calcular la diferencia en milisegundos
+    const diff = now - startDate;
+
+    // Calcular días, horas, minutos y segundos
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    const displayText = `¡Llevamos ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos juntos!`;
+    
+    document.getElementById('clock').innerText = displayText;
+}

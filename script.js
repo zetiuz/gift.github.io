@@ -63,7 +63,7 @@ function startFireworks() {
 window.onload = function() {
     startFireworks();
     
-    // Crear un nuevo fuego artificial cada 750 ms
+    // Crear un nuevo fuego artificial cada 750 m
     setInterval(() => {
         fireworks.start();
     }, 750);

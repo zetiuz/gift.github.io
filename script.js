@@ -48,3 +48,44 @@ document.getElementById("sobre").addEventListener("click", function() {
 		}, 1000);
 	}
 });
+
+const container = document.querySelector('.fireworks-container');
+const fireworks = new Fireworks(container, {
+    hue: { min: 0, max: 360 },
+});
+
+// Función para iniciar los fuegos artificiales
+function startFireworks() {
+    fireworks.start();
+}
+
+// Iniciar fuegos artificiales automáticamente al cargar la página
+window.onload = function() {
+    startFireworks();
+    
+    // Crear un nuevo fuego artificial cada 750 ms
+    setInterval(() => {
+        fireworks.start();
+    }, 750);
+
+// Fecha de inicio
+const startDate = new Date('2022-12-29T00:00:00');
+
+// Función para actualizar el reloj
+function updateClock() {
+    const now = new Date();
+    const diff = now - startDate;
+
+    const seconds = Math.floor((diff / 1000) % 60);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    
+    const months = Math.floor(days / 30); // Aproximación de meses
+    const years = Math.floor(months / 12); // Aproximación de años
+
+    const displayText = `${years} años, ${months % 12} meses, ${days % 30} días, ${hours} horas, ${minutes} minutos, ${seconds} segundos`;
+    
+    document.getElementById('clock').innerText = displayText;
+}
+};

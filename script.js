@@ -1,62 +1,27 @@
-document.getElementById("sobre").addEventListener("click", function() {
-	const carta = document.getElementById("carta");
-	const solapa = document.getElementById("solapa");
-	const capaInferior = document.getElementById("capa-inferior");
-
-	if (carta.style.display === "none" || carta.style.display === "") {
-		
-		solapa.style.backgroundColor = "#eceff4";
-		solapa.style.transform = "rotateX(180deg)";
-		solapa.style.borderTop = "none";
-		solapa.style.borderTopLeftRadius = "0";
-		solapa.style.borderTopRightRadius = "0";
-		capaInferior.style.borderTop = "none";
-		capaInferior.style.borderTopLeftRadius = "0";
-		capaInferior.style.borderTopRightRadius = "0";
-
-		setTimeout(() => {
-			carta.style.display = "block";
-			carta.style.transition = "bottom 0.5s ease, height 1.0s ease";
-
-			setTimeout(() => {
-				carta.style.bottom = "60%";
-				carta.style.height = "215px";
-			}, 500);
-		}, 500);
-
-	} else {
-		carta.style.bottom = "0";
-		carta.style.height = "120px"
-
-		setTimeout(() => {
-			solapa.style.transform = "rotateX(0deg)";
-
-			setTimeout(() => {
-				solapa.style.backgroundColor = "#bf616a";
-				solapa.style.borderTop = "solid 2px #bf616a";
-				solapa.style.borderTopLeftRadius = "8px";
-				solapa.style.borderTopRightRadius = "8px";
-
-				capaInferior.style.borderTop = "solid 2px #bf616a";
-				capaInferior.style.borderTopLeftRadius = "8px";
-				capaInferior.style.borderTopRightRadius = "8px";
-			}, 100);
-		}, 750);
-
-		setTimeout(() => {
-			carta.style.display = "none";
-		}, 1000);
-	}
-});
-
 const container = document.querySelector('.fireworks-container');
 const fireworks = new Fireworks(container, {
     hue: { min: 0, max: 360 },
+    // Aquí se añade la opción para el sonido
+    sound: {
+        explosion: 'explosion.mp3', // Ruta al archivo de sonido
+        enable: true // Habilitar el sonido
+    },
 });
 
 // Función para iniciar los fuegos artificiales
 function startFireworks() {
     fireworks.start();
+}
+
+function playExplosionSound() {
+    const audio = new Audio('explosion.mp3'); // Crea un nuevo objeto Audio
+    audio.play(); // Reproduce el sonido
+
+    // Detener el sonido después de 2 segundos
+    setTimeout(() => {
+        audio.pause(); // Pausa el sonido
+        audio.currentTime = 0; // Reinicia el tiempo del audio
+    }, 2000); // 2000 milisegundos = 2 segundos
 }
 
 // Iniciar fuegos artificiales automáticamente al cargar la página
@@ -67,30 +32,4 @@ window.onload = function() {
     setInterval(() => {
         fireworks.start();
     }, 750);
-
-// Reloj
-    setInterval(updateClock, 1000);
 };
-
-// Fecha de inicio
-const startDate = new Date('2022-12-29T00:00:00');
-
-function updateClock() {
-    const now = new Date();
-    
-    // Calcular la diferencia en milisegundos
-    const diff = now - startDate;
-
-    // Calcular días, horas, minutos y segundos
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    const displayText = `¡Llevamos ${days} días, ${hours} horas, ${minutes} minutos y ${seconds} segundos juntos!`;
-    
-    document.getElementById('clock').innerText = displayText;
-}

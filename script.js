@@ -3,7 +3,7 @@ const fireworks = new Fireworks(container, {
     hue: { min: 0, max: 360 },
     sound: {
         enabled: true, // Habilitar el sonido
-        files: ['explosion4.mp3'], // Ruta al archivo de sonido
+        files: ['explosion.mp3'], // Ruta al archivo de sonido
         volume: { 
             min: 2, // Valor mínimo
             max: 4  // Valor máximo

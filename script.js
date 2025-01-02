@@ -26,7 +26,7 @@ async function initFireworks() {
 
     // Cargar el sonido
     try {
-        await loadSound('explosion.mp3'); // Esperar a que el sonido se cargue
+        await loadSound('explosion4.mp3'); // Esperar a que el sonido se cargue
         startFireworks(); // Iniciar los fuegos artificiales después de cargar el sonido
 
         // Crear un nuevo fuego artificial cada 750 ms
